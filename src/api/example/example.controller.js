@@ -10,7 +10,7 @@ router.use("/example", googleAuth, async function(req, res, next){
   const sheetId = require('./config').sheetId
     try {
       let data = await getSheetList(auth ,sheetId);
-      const response = await request({
+      let response = await request({
         url: 'http://localhost:3001/scrape',
         headers:{
           start_urls: data.values,
@@ -18,12 +18,12 @@ router.use("/example", googleAuth, async function(req, res, next){
         },
       });
 
-      res.send(response);
+      res.status(200);
+      res.send("scraping started!")
     } catch (err) {
       console.error(err)
     }
 
 });
     
-  
   module.exports = router;
