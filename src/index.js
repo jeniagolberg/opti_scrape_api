@@ -4,7 +4,7 @@ const cors = require('cors');
 const routes = require('./api/index')
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -18,7 +18,7 @@ app.options('*',cors())
 app.use(routes);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
+    console.log(`API Server is running on ${PORT}`);
 })
 
 module.exports = app;
